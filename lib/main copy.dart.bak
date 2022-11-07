@@ -31,7 +31,6 @@ Future<void> _scheduleDailyNotification(int id, int hour, int minute) {
         enableVibration: true,
         timeoutAfter: 4 * 60 * 1000, // ASK instant timeout ?
         vibrationPattern: Int64List.fromList([0, 1000, 500, 1000]),
-        // timeoutAfter:
       ),
     ),
     androidAllowWhileIdle: true,
