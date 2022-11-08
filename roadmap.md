@@ -2,7 +2,7 @@
 
 ## Beta `0.0.1-beta`
 
-- [ ] Split UI and notification logic
+- [X] Split UI and notification logic
 - [ ] UI for notification settings + schedule and cancellation triggers
 - [ ] Notification content
 - [ ] Logo
