@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:time_watcher/notification/notification.dart';
-import 'package:time_watcher/notification/scheduler.dart';
+import 'package:time_watcher/scheduler_form.dart';
+
+const String box = "settings";
 
 void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox<int>(box);
+
   WidgetsFlutterBinding.ensureInitialized();
   await initializeNotifications();
-  await scheduleNotifications(startingHour: 7, endingHour: 23, timesPerHour: 4);
 
   runApp(const MyApp());
 }
@@ -17,11 +22,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "Time Watcher",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(),
+      home: const Scaffold(
+        body: SchedulerForm(),
+      ),
     );
   }
 }

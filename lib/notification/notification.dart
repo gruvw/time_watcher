@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:time_watcher/notification/controller.dart';
 
-const String channelKey = 'time_passes_4';
+const String channelKey = "time_passes";
 
 Future<void> initializeNotifications() async {
   await AwesomeNotifications().initialize(
@@ -11,10 +11,10 @@ Future<void> initializeNotifications() async {
     [
       NotificationChannel(
         channelKey: channelKey,
-        channelName: 'Time Passes',
-        channelDescription: 'Time Passes Description',
+        channelName: "Time Passes",
+        channelDescription: "Time Passes Description",
         playSound: true,
-        enableVibration: false,
+        enableVibration: true,
         vibrationPattern: Int64List.fromList([0, 2000]),
       )
     ],
