@@ -24,7 +24,9 @@ class DBNumberPicker extends HookWidget {
     final value = useState(Hive.box<int>(box).get(name) ?? defaultValue);
 
     return ElevatedButton(
-      child: Text("$name: ${value.value}"),
+      style: const ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll(accentColor),
+      ),
       onPressed: () async {
         value.value = await showDialog(
             context: context,
@@ -37,6 +39,7 @@ class DBNumberPicker extends HookWidget {
             });
         Hive.box<int>(box).put(name, value.value);
       },
+      child: Text("$name: ${value.value}"),
     );
   }
 }
@@ -66,7 +69,7 @@ class _NumberPickerDialog extends HookWidget {
       ),
       actions: [
         TextButton(
-          child: const Text("OK"),
+          child: const Text("OK", style: TextStyle(color: accentColor)),
           onPressed: () => Navigator.pop(context, value.value),
         )
       ],

@@ -5,7 +5,7 @@
 - [X] Split UI and notification logic
 - [X] UI for notification settings + schedule and cancellation triggers
 - [ ] Notification content
-- [ ] Logo
+- [X] Logo
 
 ### Does not depend on me
 

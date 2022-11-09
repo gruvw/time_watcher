@@ -1,5 +1,5 @@
 name: time_watcher
-description: A new Flutter project.
+description: Reminds you that time is passing
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,10 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
   awesome_notifications: ^0.7.4+1
   vibration: ^1.7.6
   flutter_hooks: ^0.18.5+1
@@ -44,6 +40,12 @@ dependencies:
   numberpicker: ^2.1.1
 
 dev_dependencies:
+  # flutter pub run flutter_launcher_icons:main
+  flutter_launcher_icons: "^0.10.0"
+
+  # flutter pub run flutter_app_name
+  flutter_app_name: ^0.1.0
+
   flutter_test:
     sdk: flutter
 
@@ -96,3 +98,21 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
+flutter_app_name:
+  name: "Time Watcher"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon.png"
+    background_color: "#343A40"
+    theme_color: "#343A40"
+  windows:
+    generate: true
+    image_path: "assets/icon.png"
+    icon_size: 128

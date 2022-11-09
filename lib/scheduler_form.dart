@@ -59,7 +59,9 @@ class SchedulerForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
             child: ElevatedButton(
-              child: const Text("Launch schedule!"),
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(accentColor),
+              ),
               onPressed: () async {
                 int n = await scheduleNotifications(
                   startingHour: Hive.box<int>(box).get(startingHourName) ??
@@ -73,16 +75,20 @@ class SchedulerForm extends StatelessWidget {
                   SnackBar(content: Text("Scheduled $n daily notifications.")),
                 );
               },
+              child: const Text("Launch schedule!"),
             ),
           ),
           ElevatedButton(
-            child: const Text("Cancel schedule"),
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(accentColor),
+            ),
             onPressed: () async {
               await cancelNotifications();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text("Canceled every notifications.")),
               );
             },
+            child: const Text("Cancel schedule"),
           ),
         ],
       ),

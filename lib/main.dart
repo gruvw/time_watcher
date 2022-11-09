@@ -5,6 +5,7 @@ import 'package:time_watcher/notification/notification.dart';
 import 'package:time_watcher/scheduler_form.dart';
 
 const String box = "settings";
+const Color accentColor = Color(0xFF0BA6F3);
 
 void main() async {
   await Hive.initFlutter();
@@ -21,14 +22,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: "Time Watcher",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Scaffold(
+      home: Scaffold(
         body: SchedulerForm(),
+        backgroundColor: Color(0xFF343A40),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
