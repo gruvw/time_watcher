@@ -7,12 +7,12 @@ const String channelKey = "time_passes";
 
 Future<void> initializeNotifications() async {
   await AwesomeNotifications().initialize(
-    null,
+    "resource://drawable/notification",
     [
       NotificationChannel(
         channelKey: channelKey,
         channelName: "Time Passes",
-        channelDescription: "Time Passes Description",
+        channelDescription: "Time Watcher's scheduled notifications",
         playSound: true,
         enableVibration: true,
         vibrationPattern: Int64List.fromList([0, 2000]),

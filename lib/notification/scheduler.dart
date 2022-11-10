@@ -1,4 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+
 import 'package:time_watcher/notification/notification.dart';
 
 const int _minPerHour = 60;
@@ -33,12 +34,15 @@ Future<void> _scheduleDailyNotification(
   int hour,
   int minute,
 ) {
+  String hourText = hour > 9 ? "$hour" : "0$hour";
+  String minuteText = minute > 9 ? "$minute" : "0$minute";
+
   return AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: id,
       channelKey: channelKey,
-      title: "Time Passes!",
-      body: "It is $hour:$minute",
+      title: "Time Passes",
+      body: "It is $hourText:$minuteText",
       notificationLayout: NotificationLayout.Default,
     ),
     schedule: NotificationCalendar(

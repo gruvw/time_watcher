@@ -4,7 +4,8 @@
 
 - [X] Split UI and notification logic
 - [X] UI for notification settings + schedule and cancellation triggers
-- [ ] Notification content
+- [X] Notification content + icon
+- [ ] Change times per hour to minutes delay
 - [X] Logo
 
 ### Does not depend on me

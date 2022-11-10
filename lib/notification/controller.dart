@@ -13,7 +13,7 @@ class NotificationController {
   ) async {
     // await Vibration.vibrate(pattern: [0, 1500]);
     await Future.delayed(
-      const Duration(seconds: 5),
+      const Duration(minutes: 2),
       () => AwesomeNotifications().dismiss(receivedNotification.id!),
     );
   }
