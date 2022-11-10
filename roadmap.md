@@ -7,6 +7,7 @@
 - [X] Notification content + icon
 - [X] Change times per hour to minutes delay
 - [X] Logo
+- [ ] Splash Screen
 
 ### Does not depend on me
 

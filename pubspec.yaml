@@ -32,6 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_native_splash: ^2.2.14
+
   awesome_notifications: ^0.7.4+1
   vibration: ^1.7.6
   flutter_hooks: ^0.18.5+1
@@ -40,11 +42,11 @@ dependencies:
   numberpicker: ^2.1.1
 
 dev_dependencies:
-  # flutter pub run flutter_launcher_icons:main
   flutter_launcher_icons: "^0.10.0"
 
-  # flutter pub run flutter_app_name
-  flutter_app_name: ^0.1.0
+  flutter_app_name:
+    git: # see https://github.com/f-prime/flutter_app_name/pull/6
+      url: https://github.com/qixotic/flutter_app_name
 
   flutter_test:
     sdk: flutter
@@ -99,9 +101,11 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
+# flutter pub run flutter_app_name
 flutter_app_name:
   name: "Time Watcher"
 
+# flutter pub run flutter_launcher_icons:main
 flutter_icons:
   android: "launcher_icon"
   ios: true
@@ -116,3 +120,12 @@ flutter_icons:
     generate: true
     image_path: "assets/icon.png"
     icon_size: 128
+
+# flutter pub run flutter_native_splash:create
+# Remove (flutter pub run flutter_native_splash:remove)
+flutter_native_splash:
+
+  color: "#343A40"
+  # background_image: "assets/background.png"
+  image: assets/icon.png
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:time_watcher/notification/notification.dart';
@@ -13,6 +14,8 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await initializeNotifications();
+
+  FlutterNativeSplash.remove();
 
   runApp(const MyApp());
 }
