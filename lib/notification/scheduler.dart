@@ -3,13 +3,14 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:time_watcher/notification/notification.dart';
 
 const int _minPerHour = 60;
+const int _maxAlerts = 400;
 
 Future<void> cancelNotifications() => AwesomeNotifications().cancelAll();
 
 Future<int> scheduleNotifications({
   required int startingHour,
   required int endingHour,
-  required int timesPerHour,
+  required int minutesDelay,
 }) async {
   await cancelNotifications();
 
@@ -18,11 +19,21 @@ Future<int> scheduleNotifications({
 
   int id = 0;
 
-  int mIncr = _minPerHour ~/ timesPerHour;
-  for (int h = startingHour; h <= endingHour; h++) {
-    for (var m = 0; m < _minPerHour; m += mIncr) {
-      await _scheduleDailyNotification(localTimeZone, id++, h, m);
+  int hours = startingHour;
+  for (int minutes = startingHour * _minPerHour;
+      minutes < endingHour * _minPerHour;
+      minutes += minutesDelay) {
+    if (id >= _maxAlerts) {
+      await cancelNotifications();
+      return -1;
     }
+    print("$id -> ${minutes ~/ _minPerHour}:${minutes % _minPerHour}");
+    await _scheduleDailyNotification(
+      localTimeZone,
+      id++,
+      minutes ~/ _minPerHour,
+      minutes % _minPerHour,
+    );
   }
 
   return id;
@@ -41,7 +52,7 @@ Future<void> _scheduleDailyNotification(
     content: NotificationContent(
       id: id,
       channelKey: channelKey,
-      title: "Time Passes",
+      title: "Time passes",
       body: "It is $hourText:$minuteText",
       notificationLayout: NotificationLayout.Default,
     ),

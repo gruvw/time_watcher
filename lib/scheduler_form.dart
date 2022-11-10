@@ -9,16 +9,16 @@ import 'package:time_watcher/number_picker.dart';
 
 class SchedulerForm extends StatelessWidget {
   static const minHour = 0;
-  static const maxHour = 23;
-  static const minFrequency = 1;
-  static const maxFrequency = 20;
+  static const maxHour = 24;
+  static const minDelay = 1;
+  static const maxDelay = 60;
 
   static const startingHourName = "Starting hour";
   static const defaultStartingHour = 7;
   static const endingHourName = "Ending hour";
   static const defaultEndingHour = 23;
-  static const frequencyName = "Times per hour";
-  static const defaultFrequency = 4;
+  static const minutesDelay = "Minutes delay";
+  static const defaultDelay = 15;
 
   const SchedulerForm({super.key});
 
@@ -50,10 +50,10 @@ class SchedulerForm extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 25),
             child: DBNumberPicker(
-              name: frequencyName,
-              defaultValue: defaultFrequency,
-              min: minFrequency,
-              max: maxFrequency,
+              name: minutesDelay,
+              defaultValue: defaultDelay,
+              min: minDelay,
+              max: maxDelay,
             ),
           ),
           Padding(
@@ -68,11 +68,16 @@ class SchedulerForm extends StatelessWidget {
                       defaultStartingHour,
                   endingHour: Hive.box<int>(box).get(endingHourName) ??
                       defaultEndingHour,
-                  timesPerHour:
-                      Hive.box<int>(box).get(frequencyName) ?? defaultFrequency,
+                  minutesDelay:
+                      Hive.box<int>(box).get(minutesDelay) ?? defaultDelay,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Scheduled $n daily notifications.")),
+                  SnackBar(
+                      content: Text(
+                    n >= 0
+                        ? "Scheduled $n daily notifications."
+                        : "You tried to schedule too many notifications.",
+                  )),
                 );
               },
               child: const Text("Launch schedule!"),
