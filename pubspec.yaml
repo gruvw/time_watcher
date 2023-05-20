@@ -34,7 +34,7 @@ dependencies:
 
   flutter_native_splash: ^2.2.14
 
-  awesome_notifications: ^0.7.4+1
+  awesome_notifications: ^0.7.5-dev.2+1
   vibration: ^1.7.6
   flutter_hooks: ^0.18.5+1
   hive: ^2.2.3
@@ -42,7 +42,7 @@ dependencies:
   numberpicker: ^2.1.1
 
 dev_dependencies:
-  flutter_launcher_icons: "^0.10.0"
+  flutter_launcher_icons: ^0.13.1
 
   flutter_app_name:
     git: # see https://github.com/f-prime/flutter_app_name/pull/6
@@ -71,9 +71,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+    - icon.png
+    - notification.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -128,4 +127,3 @@ flutter_native_splash:
   color: "#343A40"
   # background_image: "assets/background.png"
   image: assets/icon.png
-

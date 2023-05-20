@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:time_watcher/main.dart';
@@ -64,12 +65,9 @@ class SchedulerForm extends StatelessWidget {
               ),
               onPressed: () async {
                 int n = await scheduleNotifications(
-                  startingHour: Hive.box<int>(box).get(startingHourName) ??
-                      defaultStartingHour,
-                  endingHour: Hive.box<int>(box).get(endingHourName) ??
-                      defaultEndingHour,
-                  minutesDelay:
-                      Hive.box<int>(box).get(minutesDelay) ?? defaultDelay,
+                  startingHour: Hive.box<int>(box).get(startingHourName) ?? defaultStartingHour,
+                  endingHour: Hive.box<int>(box).get(endingHourName) ?? defaultEndingHour,
+                  minutesDelay: Hive.box<int>(box).get(minutesDelay) ?? defaultDelay,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -94,6 +92,21 @@ class SchedulerForm extends StatelessWidget {
               );
             },
             child: const Text("Cancel schedule"),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 20, 0, 00),
+            child: ElevatedButton(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(accentColor),
+              ),
+              onPressed: () async {
+                await launchNotification("Test Notification");
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Test Notification sent!")),
+                );
+              },
+              child: const Text("Test notification"),
+            ),
           ),
         ],
       ),

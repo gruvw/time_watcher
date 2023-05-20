@@ -1,5 +1,6 @@
+import 'dart:typed_data';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:time_watcher/notification/controller.dart';
 
@@ -12,22 +13,19 @@ Future<void> initializeNotifications() async {
       NotificationChannel(
         channelKey: channelKey,
         channelName: "Time Passes",
-        channelDescription: "Time Watcher's scheduled notifications",
+        channelDescription: "Time Watcher's notifications",
         playSound: true,
         enableVibration: true,
-        vibrationPattern: Int64List.fromList([0, 2000]),
+        vibrationPattern: Int64List.fromList([0, 1000]),
       )
     ],
   );
 
   AwesomeNotifications().setListeners(
     onActionReceivedMethod: NotificationController.onActionReceivedMethod,
-    onNotificationCreatedMethod:
-        NotificationController.onNotificationCreatedMethod,
-    onNotificationDisplayedMethod:
-        NotificationController.onNotificationDisplayedMethod,
-    onDismissActionReceivedMethod:
-        NotificationController.onDismissActionReceivedMethod,
+    onNotificationCreatedMethod: NotificationController.onNotificationCreatedMethod,
+    onNotificationDisplayedMethod: NotificationController.onNotificationDisplayedMethod,
+    onDismissActionReceivedMethod: NotificationController.onDismissActionReceivedMethod,
   );
 
   await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {

@@ -7,9 +7,11 @@
 - [X] Notification content + icon
 - [X] Change times per hour to minutes delay
 - [X] Logo
-- [ ] Splash Screen
+- [X] Splash Screen
+
+## Major `0.0.1`
 
 ### Does not depend on me
 
 - [ ] Notification timeout, see: https://github.com/rafaelsetragni/awesome_notifications/issues/576
-- [ ] Custom vibration pattern, see: https://github.com/rafaelsetragni/awesome_notifications/issues/640
+- [X] Custom vibration pattern, see: https://github.com/rafaelsetragni/awesome_notifications/issues/640

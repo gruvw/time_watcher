@@ -14,12 +14,10 @@ Future<int> scheduleNotifications({
 }) async {
   await cancelNotifications();
 
-  String localTimeZone =
-      await AwesomeNotifications().getLocalTimeZoneIdentifier();
+  String localTimeZone = await AwesomeNotifications().getLocalTimeZoneIdentifier();
 
   int id = 0;
 
-  int hours = startingHour;
   for (int minutes = startingHour * _minPerHour;
       minutes < endingHour * _minPerHour;
       minutes += minutesDelay) {
@@ -27,7 +25,7 @@ Future<int> scheduleNotifications({
       await cancelNotifications();
       return -1;
     }
-    print("$id -> ${minutes ~/ _minPerHour}:${minutes % _minPerHour}");
+    // print("$id -> ${minutes ~/ _minPerHour}:${minutes % _minPerHour}");
     await _scheduleDailyNotification(
       localTimeZone,
       id++,
@@ -63,6 +61,18 @@ Future<void> _scheduleDailyNotification(
       timeZone: timeZone,
       preciseAlarm: true,
       repeats: true,
+    ),
+  );
+}
+
+Future<void> launchNotification(String text) {
+  return AwesomeNotifications().createNotification(
+    content: NotificationContent(
+      id: -1,
+      channelKey: channelKey,
+      title: "Time passes",
+      body: text,
+      notificationLayout: NotificationLayout.Default,
     ),
   );
 }
