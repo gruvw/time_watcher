@@ -16,7 +16,7 @@ Future<void> initializeNotifications() async {
         channelDescription: "Time Watcher's notifications",
         playSound: true,
         enableVibration: true,
-        vibrationPattern: Int64List.fromList([0, 1000]),
+        vibrationPattern: Int64List.fromList([0, 1500]),
       )
     ],
   );

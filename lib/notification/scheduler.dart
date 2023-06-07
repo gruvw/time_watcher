@@ -2,7 +2,8 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 
 import 'package:time_watcher/notification/notification.dart';
 
-const int _minPerHour = 60;
+const int _timeBase = 60;
+const int _timeoutFactor = 10;
 const int _maxAlerts = 400;
 
 Future<void> cancelNotifications() => AwesomeNotifications().cancelAll();
@@ -18,8 +19,8 @@ Future<int> scheduleNotifications({
 
   int id = 0;
 
-  for (int minutes = startingHour * _minPerHour;
-      minutes < endingHour * _minPerHour;
+  for (int minutes = startingHour * _timeBase;
+      minutes <= endingHour * _timeBase;
       minutes += minutesDelay) {
     if (id >= _maxAlerts) {
       await cancelNotifications();
@@ -29,8 +30,9 @@ Future<int> scheduleNotifications({
     await _scheduleDailyNotification(
       localTimeZone,
       id++,
-      minutes ~/ _minPerHour,
-      minutes % _minPerHour,
+      minutes ~/ _timeBase,
+      minutes % _timeBase,
+      minutesDelay / _timeoutFactor * _timeBase,
     );
   }
 
@@ -42,6 +44,7 @@ Future<void> _scheduleDailyNotification(
   int id,
   int hour,
   int minute,
+  double timeout,
 ) {
   String hourText = hour > 9 ? "$hour" : "0$hour";
   String minuteText = minute > 9 ? "$minute" : "0$minute";
@@ -53,6 +56,7 @@ Future<void> _scheduleDailyNotification(
       title: "Time passes",
       body: "It is $hourText:$minuteText",
       notificationLayout: NotificationLayout.Default,
+      timeoutAfter: Duration(seconds: timeout.toInt()),
     ),
     schedule: NotificationCalendar(
       hour: hour,
@@ -73,6 +77,7 @@ Future<void> launchNotification(String text) {
       title: "Time passes",
       body: text,
       notificationLayout: NotificationLayout.Default,
+      timeoutAfter: const Duration(seconds: _timeBase),
     ),
   );
 }

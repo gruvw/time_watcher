@@ -34,7 +34,7 @@ dependencies:
 
   flutter_native_splash: ^2.2.14
 
-  awesome_notifications: ^0.7.5-dev.2+1
+  awesome_notifications: ^0.7.5-dev.3
   vibration: ^1.7.6
   flutter_hooks: ^0.18.5+1
   hive: ^2.2.3
@@ -71,8 +71,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - icon.png
-    - notification.png
+    - assets/icon.png
+    - assets/notification.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
