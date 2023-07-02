@@ -13,5 +13,5 @@
 
 ### Does not depend on me
 
-- [ ] Notification timeout, see: https://github.com/rafaelsetragni/awesome_notifications/issues/576
+- [X] Notification timeout, see: https://github.com/rafaelsetragni/awesome_notifications/issues/576
 - [X] Custom vibration pattern, see: https://github.com/rafaelsetragni/awesome_notifications/issues/640
